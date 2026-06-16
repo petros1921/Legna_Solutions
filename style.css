@@ -1,0 +1,52 @@
+/* ========================================
+   Legna Solutions - Custom Styles
+   (All manual overrides & base styles)
+   ======================================== */
+
+/* Smooth scrolling & font smoothing */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Custom underline effect for the logo */
+.logo-underline {
+    text-decoration: underline;
+    text-decoration-color: #C87A5A;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 3px;
+}
+
+/* Optional: Smooth hover transitions for all interactive elements */
+a, button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar (lightweight, just for visual polish) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F9F6F0;
+}
+::-webkit-scrollbar-thumb {
+    background: #C87A5A;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b06a4a;
+}
+
+/* Ensure images and icons don't break layout */
+img, svg {
+    max-width: 100%;
+    display: block;
+}
+
+/* Fix for mobile input fields zooming (keeps text size consistent) */
+input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+}

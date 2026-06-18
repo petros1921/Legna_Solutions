@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Legna Solutions · Digital for Us</title>
 
-    <!-- 1. Tailwind CSS via CDN (Kept here for utility classes) -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- 2. Font Awesome for icons -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- 3. YOUR EXTERNAL CUSTOM STYLES -->
+    <!-- Your Custom Styles -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- 4. Tailwind Config (Stays here because it's framework config) -->
+    <!-- Tailwind Config (Added darkMode: 'class') -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -32,84 +33,96 @@
 <body>
 
     <!-- ========================================== -->
-    <!-- SECTION 1: NAVIGATION                      -->
+    <!-- NAVIGATION (Added Dark Mode Support)       -->
     <!-- ========================================== -->
-    <nav class="bg-white/90 backdrop-blur-sm shadow-sm fixed w-full z-50 top-0 border-b border-gray-100">
+    <nav class="bg-white/90 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm fixed w-full z-50 top-0 border-b border-gray-100 dark:border-gray-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-2xl font-bold text-legna-indigo">
+                <span class="text-2xl font-bold text-legna-indigo dark:text-white">
                     Legna<span class="text-legna-terracotta">.</span>
                 </span>
-                <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-full hidden sm:inline-block">
+                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 bg-legna-terracotta-200 dark:bg-gray-700 px-2 py-1 rounded-full hidden sm:inline-block">
                     ለኛ
                 </span>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#contact" class="bg-legna-terracotta hover:bg-orange-700 text-white font-semibold px-5 py-2 rounded-full text-sm shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                    <i class="fas fa-phone-alt mr-2"></i>Get Started
+            
+            <!-- Nav Links + Toggle Button -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="#why" class="hidden md:inline-block text-legna-indigo dark:text-gray-300 hover:text-legna-terracotta dark:hover:text-legna-terracotta font-medium text-sm transition">Why a Website?</a>
+                <!-- Inside the nav, right after "Why a Website?" -->
+                <a href="#portfolio" class="hidden md:inline-block text-legna-indigo dark:text-gray-300 hover:text-legna-terracotta dark:hover:text-legna-terracotta font-medium text-sm transition">Our Work</a>
+                <a href="#about" class="hidden md:inline-block text-legna-indigo dark:text-gray-300 hover:text-legna-terracotta dark:hover:text-legna-terracotta font-medium text-sm transition">About Us</a>
+                
+                <!-- DARK MODE TOGGLE BUTTON -->
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 text-legna-indigo dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300 text-sm focus:outline-none">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+
+                <a href="#contact" class="bg-legna-terracotta hover:bg-orange-700 text-white font-semibold px-4 sm:px-5 py-2 rounded-full text-sm shadow-md transition duration-300 ease-in-out transform hover:scale-105 whitespace-nowrap">
+                    <i class="fas fa-phone-alt mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Get Started</span><span class="sm:hidden">Start</span>
                 </a>
             </div>
         </div>
     </nav>
 
     <!-- ========================================== -->
-    <!-- SECTION 2: HERO                           -->
+    <!-- HERO SECTION (Dark Mode Ready)              -->
     <!-- ========================================== -->
-    <section class="pt-28 pb-16 px-4 sm:px-6 bg-legna-cream min-h-screen flex items-center">
+    <section class="pt-28 pb-16 px-4 sm:px-6 bg-legna-cream dark:bg-gray-900 min-h-screen flex items-center">
         <div class="max-w-6xl mx-auto w-full">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <div class="inline-block bg-legna-terracotta/10 text-legna-terracotta font-semibold px-4 py-1 rounded-full text-sm mb-4">
-                        <i class="fas fa-ethiopia mr-2"></i> Digital tools built by us, for us.
+                    <div class="inline-block bg-legna-terracotta/10 dark:bg-legna-terracotta/20 text-legna-terracotta font-semibold px-4 py-1 rounded-full text-sm mb-4">
+                        <i class="fas fa-ethiopia mr-2"></i> Built for Addis Ababa
                     </div>
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-legna-indigo leading-tight">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-legna-indigo dark:text-white leading-tight">
                         If Google Can't Find You, <br />
                         <span class="text-legna-terracotta">You Don't Exist.</span>
                     </h1>
-                    <p class="text-lg sm:text-xl text-gray-600 mt-6 leading-relaxed">
+                    <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mt-6 leading-relaxed">
                         Your business runs on word-of-mouth. But 70% of Ethiopian customers now search online before they buy. 
-                        <span class="font-semibold text-legna-indigo">We build lightweight digital storefronts</span> that integrate with Telebirr/Chapa—so you stop losing customers to competitors who show up online.
+                        <span class="font-semibold text-legna-indigo dark:text-white">We build lightweight digital storefronts</span> that integrate with Telebirr/Chapa—so you stop losing customers to competitors who show up online.
                     </p>
                     <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="bg-legna-indigo hover:bg-black text-white font-bold py-4 px-8 rounded-full text-center shadow-xl transition duration-300 transform hover:scale-105">
+                        <a href="#contact" class="bg-legna-indigo dark:bg-legna-terracotta hover:bg-black dark:hover:bg-orange-700 text-white font-bold py-4 px-8 rounded-full text-center shadow-xl transition duration-300 transform hover:scale-105">
                             <i class="fas fa-rocket mr-2"></i> Claim Your Digital Storefront
                         </a>
-                        <a href="#problem" class="border-2 border-legna-indigo text-legna-indigo hover:bg-legna-indigo hover:text-white font-semibold py-4 px-8 rounded-full text-center transition duration-300">
+                        <a href="#problem" class="border-2 border-legna-indigo dark:border-white text-legna-indigo dark:text-white hover:bg-legna-indigo dark:hover:bg-white dark:hover:text-legna-indigo hover:text-white font-semibold py-4 px-8 rounded-full text-center transition duration-300">
                             <i class="fas fa-play-circle mr-2"></i> See How It Works
                         </a>
                     </div>
-                    <p class="text-sm text-gray-400 mt-6">
+                    <p class="text-sm text-gray-400 dark:text-gray-500 mt-6">
                         <i class="fas fa-shield-alt mr-1"></i> No long contracts. Built in 5 days. 
                     </p>
                 </div>
-                <!-- Right: Visual -->
-                <div class="hidden md:block bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                        <div class="flex items-center space-x-2 text-gray-400 text-sm mb-3">
+                <!-- Right: Visual (Dark mode compatible) -->
+                <div class="hidden md:block bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700">
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center space-x-2 text-gray-400 dark:text-gray-500 text-sm mb-3">
                             <i class="fas fa-search"></i>
                             <span>Google Search</span>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-200">
-                            <p class="text-gray-800 font-medium">"Best construction materials <span class="text-legna-terracotta font-bold">Bole</span>"</p>
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                            <p class="text-gray-800 dark:text-white font-medium">"Best construction materials <span class="text-legna-terracotta font-bold">Bole</span>"</p>
                             <div class="mt-3 space-y-3">
-                                <div class="flex items-start space-x-3 p-2 hover:bg-gray-50 rounded-lg">
-                                    <i class="fas fa-store text-gray-400 mt-1"></i>
+                                <div class="flex items-start space-x-3 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+                                    <i class="fas fa-store text-gray-400 dark:text-gray-500 mt-1"></i>
                                     <div>
-                                        <p class="text-sm font-semibold text-gray-700">Merkato Mart</p>
-                                        <p class="text-xs text-gray-400">⭐⭐⭐⭐ (120 reviews) · <span class="text-green-600">Has Website</span></p>
+                                        <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">Merkato Mart</p>
+                                        <p class="text-xs text-gray-400 dark:text-gray-500">⭐⭐⭐⭐ (120 reviews) · <span class="text-green-600 dark:text-green-400">Has Website</span></p>
                                     </div>
                                 </div>
-                                <div class="flex items-start space-x-3 p-2 bg-red-50 rounded-lg border-l-4 border-red-500">
+                                <div class="flex items-start space-x-3 p-2 bg-red-50 dark:bg-red-900/30 rounded-lg border-l-4 border-red-500">
                                     <i class="fas fa-store text-red-400 mt-1"></i>
                                     <div>
-                                        <p class="text-sm font-semibold text-gray-700">Your Business</p>
-                                        <p class="text-xs text-red-500 font-bold">⚠️ NOT FOUND ONLINE</p>
+                                        <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">Your Business</p>
+                                        <p class="text-xs text-red-500 dark:text-red-400 font-bold">⚠️ NOT FOUND ONLINE</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-400 text-center mt-4">
+                    <p class="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
                         <i class="fas fa-exclamation-triangle text-legna-terracotta mr-1"></i> Your competitors are already here.
                     </p>
                 </div>
@@ -118,130 +131,417 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SECTION 3: PROBLEM / SOLUTION              -->
+    <!-- PROBLEM / SOLUTION MATRIX (Dark Mode)       -->
     <!-- ========================================== -->
-    <section id="problem" class="py-20 px-4 sm:px-6 bg-white">
+    <section id="problem" class="py-20 px-4 sm:px-6 bg-white dark:bg-gray-950">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo">
+                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo dark:text-white">
                     The Price of Staying Offline
                 </h2>
                 <div class="w-24 h-1 bg-legna-terracotta mx-auto mt-4 rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-red-50 p-8 rounded-2xl border-l-8 border-red-400 shadow-sm">
+                <div class="bg-red-50 dark:bg-red-900/20 p-8 rounded-2xl border-l-8 border-red-400 shadow-sm">
                     <div class="flex items-center space-x-3 mb-4">
                         <i class="fas fa-times-circle text-red-500 text-2xl"></i>
-                        <h3 class="text-xl font-bold text-red-700">Chaotic WhatsApp Orders</h3>
+                        <h3 class="text-xl font-bold text-red-700 dark:text-red-400">Chaotic WhatsApp Orders</h3>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">Relying on Telegram/WhatsApp means losing orders in endless chats. You can't track inventory, pricing errors happen daily, and customers get ignored.</p>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Relying on Telegram/WhatsApp means losing orders in endless chats. You can't track inventory, pricing errors happen daily, and customers get ignored.</p>
                 </div>
-                <div class="bg-green-50 p-8 rounded-2xl border-l-8 border-legna-terracotta shadow-sm">
+                <div class="bg-green-50 dark:bg-green-900/20 p-8 rounded-2xl border-l-8 border-legna-terracotta shadow-sm">
                     <div class="flex items-center space-x-3 mb-4">
                         <i class="fas fa-check-circle text-legna-terracotta text-2xl"></i>
-                        <h3 class="text-xl font-bold text-legna-indigo">Auto-Generated Order Forms</h3>
+                        <h3 class="text-xl font-bold text-legna-indigo dark:text-white">Auto-Generated Order Forms</h3>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">We build a simple catalog app. Customers select items, see total cost, and pay via Telebirr—without a single chat message getting lost. <span class="font-semibold">You sleep better.</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">We build a simple catalog app. Customers select items, see total cost, and pay via Telebirr—without a single chat message getting lost. <span class="font-semibold dark:text-white">You sleep better.</span></p>
                 </div>
-                <div class="bg-red-50 p-8 rounded-2xl border-l-8 border-red-400 shadow-sm">
+                <div class="bg-red-50 dark:bg-red-900/20 p-8 rounded-2xl border-l-8 border-red-400 shadow-sm">
                     <div class="flex items-center space-x-3 mb-4">
                         <i class="fas fa-clock text-red-500 text-2xl"></i>
-                        <h3 class="text-xl font-bold text-red-700">Staff Burnout from Repetitive DMs</h3>
+                        <h3 class="text-xl font-bold text-red-700 dark:text-red-400">Staff Burnout from Repetitive DMs</h3>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">Customers ask for "location" and "price lists" hundreds of times a day. Your staff is stuck answering questions instead of fulfilling actual orders.</p>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Customers ask for "location" and "price lists" hundreds of times a day. Your staff is stuck answering questions instead of fulfilling actual orders.</p>
                 </div>
-                <div class="bg-green-50 p-8 rounded-2xl border-l-8 border-legna-terracotta shadow-sm">
+                <div class="bg-green-50 dark:bg-green-900/20 p-8 rounded-2xl border-l-8 border-legna-terracotta shadow-sm">
                     <div class="flex items-center space-x-3 mb-4">
                         <i class="fas fa-robot text-legna-terracotta text-2xl"></i>
-                        <h3 class="text-xl font-bold text-legna-indigo">24/7 Digital Assistant</h3>
+                        <h3 class="text-xl font-bold text-legna-indigo dark:text-white">24/7 Digital Assistant</h3>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">A mobile-first page answers every question instantly. Contact info, map location, and pricing—available at 2 AM. Your staff focuses on what matters: <span class="font-semibold">sales.</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">A mobile-first page answers every question instantly. Contact info, map location, and pricing—available at 2 AM. Your staff focuses on what matters: <span class="font-semibold dark:text-white">sales.</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- SECTION 4: SERVICES                        -->
+    <!-- NEW SECTION: WHY A WEBSITE (Dark Mode)      -->
     <!-- ========================================== -->
-    <section id="services" class="py-20 px-4 sm:px-6 bg-legna-cream">
+    <section id="why" class="py-20 px-4 sm:px-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo">
-                    Start Small. <span class="text-legna-terracotta">Win Big.</span>
+            <div class="text-center mb-12">
+                <span class="text-legna-terracotta font-bold text-sm uppercase tracking-wider"><i class="fas fa-bullhorn mr-2"></i> The Digital Shift</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo dark:text-white mt-2">
+                    Your Business Card is Useless <span class="text-legna-terracotta">at 10 PM.</span>
                 </h2>
-                <p class="text-gray-600 mt-2 max-w-2xl mx-auto">No technical jargon. Just clear packages to get you online safely.</p>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mt-3">
+                    You don't need a complex online store to benefit from the internet. 
+                    <span class="font-semibold text-legna-indigo dark:text-white">Even an "information-only" website</span> changes everything.
+                </p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition duration-300">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-legna-cream dark:bg-gray-800 p-6 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-legna-terracotta/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-legna-terracotta"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-legna-indigo dark:text-white">Open 24/7</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2 leading-relaxed">
+                        A customer searches for your phone number or location at 2 AM. 
+                        <span class="font-bold text-legna-indigo dark:text-white">If they don't find it, they call your competitor</span> who wakes up to a new order.
+                    </p>
+                </div>
+                <div class="bg-legna-cream dark:bg-gray-800 p-6 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-legna-terracotta/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-legna-terracotta"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-legna-indigo dark:text-white">Instant Trust</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2 leading-relaxed">
+                        Ethiopians are cautious. A professional page with your location, photos, and a clear price list 
+                        <span class="font-bold text-legna-indigo dark:text-white">makes your business look established and safe</span>—before they even walk in.
+                    </p>
+                </div>
+                <div class="bg-legna-cream dark:bg-gray-800 p-6 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-legna-terracotta/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-clock text-2xl text-legna-terracotta"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-legna-indigo dark:text-white">Stop Repeating Yourself</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2 leading-relaxed">
+                        How many times do your staff answer *"Where are you located?"* or *"How much is this?"* 
+                        <span class="font-bold text-legna-indigo dark:text-white">Put it on a website. Let it answer for you.</span> Your staff focuses on serving customers, not texting back DMs.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-10 bg-legna-indigo/5 dark:bg-white/5 p-6 rounded-2xl border-l-4 border-legna-terracotta max-w-3xl mx-auto">
+                <p class="text-sm text-gray-700 dark:text-gray-300 italic">
+                    <i class="fas fa-quote-left text-legna-terracotta mr-2"></i> 
+                    "I don't sell online, so I don't need a website." 
+                    <span class="font-bold text-legna-indigo dark:text-white block mt-1">— Actually, you do. 70% of Addis customers search for a business online <u>before</u> visiting. If you're not there, you're invisible.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: PORTFOLIO / CASE STUDIES       -->
+    <!-- ========================================== -->
+    <section id="portfolio" class="py-20 px-4 sm:px-6 bg-legna-cream dark:bg-gray-900/50 border-y border-gray-100 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-legna-terracotta font-bold text-sm uppercase tracking-wider"><i class="fas fa-briefcase mr-2"></i> Real Results</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo dark:text-white mt-2">
+                    We Build for <span class="text-legna-terracotta">Ethiopian Businesses.</span>
+                </h2>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mt-3">
+                    Here are recent digital tools we built for local startups and shops. 
+                    <span class="font-semibold text-legna-indigo dark:text-white">Every project is lightweight, mobile-first, and built for our networks.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- PROJECT 1: Coffee Exporter -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col">
+                    <!-- Mock Image / Placeholder -->
+                    <div class="h-48 bg-gradient-to-br from-amber-700 to-amber-900 dark:from-amber-800 dark:to-black relative flex items-center justify-center">
+                        <div class="text-center text-white/80">
+                            <i class="fas fa-mug-hot text-4xl mb-2"></i>
+                            <p class="text-sm font-bold uppercase tracking-wider">Solomon Coffee</p>
+                            <p class="text-xs opacity-70">Ethiopian Coffee Exporters</p>
+                        </div>
+                        <!-- Impact Badge -->
+                        <div class="absolute bottom-3 right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            +40% Inquiries
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-legna-indigo dark:text-white text-lg">Digital Catalog</h3>
+                            <span class="text-xs bg-legna-terracotta/10 text-legna-terracotta px-2 py-1 rounded-full">Static</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-grow">
+                            Replaced their heavy PDF price list with a lightweight image gallery. International buyers can now browse products instantly on 3G—no more waiting for large attachments to download.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700 flex justify-between text-xs text-gray-400 dark:text-gray-500">
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 5 Pages</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 2 Days Build</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> Inquiry Form</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Clothing Store (E-commerce) -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col">
+                    <!-- Mock Image -->
+                    <div class="h-48 bg-gradient-to-br from-indigo-700 to-purple-900 dark:from-indigo-900 dark:to-black relative flex items-center justify-center">
+                        <div class="text-center text-white/80">
+                            <i class="fas fa-tshirt text-4xl mb-2"></i>
+                            <p class="text-sm font-bold uppercase tracking-wider">Habesha Threads</p>
+                            <p class="text-xs opacity-70">Addis Ababa Clothing Brand</p>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            📱 Mobile-First
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-legna-indigo dark:text-white text-lg">Online Storefront</h3>
+                            <span class="text-xs bg-legna-terracotta/10 text-legna-terracotta px-2 py-1 rounded-full">Dynamic</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-grow">
+                            Moved them from Instagram DMs to a proper mobile store. Integrated Telebirr checkout. Customers now browse stock, see prices, and pay without sending a single WhatsApp message.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700 flex justify-between text-xs text-gray-400 dark:text-gray-500">
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> Telebirr</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 10 Products</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 3 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: Restaurant / Cafe -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col">
+                    <!-- Mock Image -->
+                    <div class="h-48 bg-gradient-to-br from-orange-600 to-red-700 dark:from-orange-800 dark:to-black relative flex items-center justify-center">
+                        <div class="text-center text-white/80">
+                            <i class="fas fa-utensils text-4xl mb-2"></i>
+                            <p class="text-sm font-bold uppercase tracking-wider">Bole Bistro</p>
+                            <p class="text-xs opacity-70">Restaurant & Café</p>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            📍 Location Finder
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-legna-indigo dark:text-white text-lg">Info Hub</h3>
+                            <span class="text-xs bg-legna-terracotta/10 text-legna-terracotta px-2 py-1 rounded-full">Static</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-grow">
+                            Stopped 50+ daily phone calls asking "Where are you?" and "What's the menu?". Built a simple page with the menu, exact Google Maps location, and opening hours. Staff now focuses on serving food, not answering directions.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700 flex justify-between text-xs text-gray-400 dark:text-gray-500">
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 3 Pages</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> 2 Days Build</span>
+                            <span><i class="fas fa-check-circle text-legna-terracotta mr-1"></i> Maps + Menu</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom CTA for this section -->
+            <div class="text-center mt-10">
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                    <i class="fas fa-asterisk text-legna-terracotta mr-1"></i> These are real projects we've delivered. 
+                    <span class="font-semibold text-legna-indigo dark:text-white">Your business could be next.</span>
+                </p>
+                <a href="#contact" class="inline-block mt-4 bg-legna-indigo dark:bg-legna-terracotta hover:bg-black dark:hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                    <i class="fas fa-rocket mr-2"></i> Let's Build Your Project
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ABOUT LEGNA SOLUTIONS (Dark Mode)           -->
+    <!-- ========================================== -->
+    <section id="about" class="py-20 px-4 sm:px-6 bg-legna-indigo dark:bg-gray-950 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-legna-terracotta font-bold text-sm uppercase tracking-wider"><i class="fas fa-ethiopia mr-2"></i> Who We Are</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mt-2 leading-tight">
+                        We're Not Outsiders. <br>
+                        <span class="text-legna-terracotta">We're Legna.</span>
+                    </h2>
+                    <p class="text-gray-300 dark:text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
+                        <span class="font-bold text-white">Legna</span> (ለኛ) means <span class="font-bold text-legna-terracotta">"For Us"</span> in Amharic. 
+                        We are a digital solutions studio built right here in Addis Ababa, by developers who understand the real-world challenges of doing business in Ethiopia.
+                    </p>
+                    <div class="space-y-3 mt-6">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-wifi text-legna-terracotta mt-1 text-lg"></i>
+                            <p class="text-sm text-gray-300 dark:text-gray-400">We build <span class="text-white font-medium">ultra-lightweight sites</span> that load fast on standard 3G/4G data—because we know data isn't cheap.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-mobile-alt text-legna-terracotta mt-1 text-lg"></i>
+                            <p class="text-sm text-gray-300 dark:text-gray-400">We design <span class="text-white font-medium">mobile-first</span> because 80% of Ethiopian users browse on their phones, not desktops.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-hand-holding-usd text-legna-terracotta mt-1 text-lg"></i>
+                            <p class="text-sm text-gray-300 dark:text-gray-400">We integrate <span class="text-white font-medium">Telebirr & Chapa</span> seamlessly—so your customers can pay the way they already know.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 dark:text-gray-500 text-sm mt-6 border-t border-gray-700 pt-4">
+                        <i class="fas fa-heart text-legna-terracotta mr-1"></i> We believe in sustainable growth—for your business, and for us. No burnout, no over-promising. Just honest, reliable digital tools.
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 text-center">
+                    <div class="inline-block bg-legna-terracotta/20 p-6 rounded-full mb-4">
+                        <i class="fas fa-handshake text-5xl text-legna-terracotta"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Built by Us. <br> <span class="text-legna-terracotta">For Us.</span></h3>
+                    <p class="text-gray-300 dark:text-gray-400 text-sm mt-3 leading-relaxed max-w-xs mx-auto">
+                        "We don't just build websites. We build <span class="font-bold text-white">digital addresses</span> that make your business impossible to ignore."
+                    </p>
+                    <div class="mt-6 flex justify-center space-x-2 text-xs text-gray-400 dark:text-gray-500">
+                        <span class="bg-white/10 px-3 py-1 rounded-full">📍 Addis Ababa</span>
+                        <span class="bg-white/10 px-3 py-1 rounded-full">🇪🇹 100% Ethiopian</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
+                        <div>
+                            <p class="text-2xl font-bold text-legna-terracotta">0</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">Foreign middlemen</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-legna-terracotta">100%</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">Focus on local needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SERVICES / PRICING (Dark Mode)              -->
+    <!-- ========================================== -->
+    <section id="services" class="py-20 px-4 sm:px-6 bg-legna-cream dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-legna-indigo dark:text-white">
+                    Clear Pricing. <span class="text-legna-terracotta">Zero Surprises.</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-2 max-w-2xl mx-auto">
+                    Choose what fits your business today. Hosting and domain are priced separately—so you only pay for what you need.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                
+                <!-- CARD 1: STATIC -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col">
                     <div class="flex justify-between items-start">
                         <div>
-                            <span class="text-sm font-bold text-legna-terracotta bg-legna-terracotta/10 px-3 py-1 rounded-full">Best for Beginners</span>
-                            <h3 class="text-2xl font-bold text-legna-indigo mt-4">The Launchpad</h3>
+                            <span class="text-xs font-bold text-legna-terracotta bg-legna-terracotta/10 px-3 py-1 rounded-full">Best for Beginners</span>
+                            <h3 class="text-xl font-bold text-legna-indigo dark:text-white mt-3">Static Website</h3>
                         </div>
-                        <i class="fas fa-store text-3xl text-legna-terracotta/40"></i>
+                        <i class="fas fa-file-code text-3xl text-legna-terracotta/30"></i>
                     </div>
-                    <p class="text-gray-500 text-sm mt-2">Professional 3-page mobile site (Home, Products, Contact).</p>
-                    <div class="my-6">
-                        <span class="text-4xl font-extrabold text-legna-indigo">45k</span>
-                        <span class="text-gray-500"> ETB</span>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Perfect for businesses, portfolios, and restaurants.</p>
+                    <div class="my-4">
+                        <span class="text-3xl font-extrabold text-legna-indigo dark:text-white">5,000</span>
+                        <span class="text-gray-500 dark:text-gray-400"> - 10,000 ETB</span>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">*Final price depends on number of pages & design.</p>
                     </div>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Lightweight, loads on 3G networks</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Telebirr / Chapa payment integration</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Google Maps location embed</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Built in <strong>5 days</strong></li>
+                    <ul class="space-y-2 mb-6 text-sm flex-grow">
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Up to 5 static pages</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Mobile-responsive</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Contact form & Google Maps</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Built in <strong class="dark:text-white">3-5 days</strong></li>
                     </ul>
-                    <a href="#contact" class="block text-center bg-legna-indigo hover:bg-black text-white font-bold py-3 px-6 rounded-full transition">Get This Package</a>
+                    <a href="#contact" class="block text-center bg-legna-indigo dark:bg-legna-terracotta hover:bg-black dark:hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full transition text-sm">
+                        Get a Quote
+                    </a>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-xl border-2 border-legna-terracotta relative hover:shadow-2xl transition duration-300">
-                    <div class="absolute -top-3 right-6 bg-legna-terracotta text-white text-xs font-bold px-4 py-1 rounded-full">Most Popular</div>
-                    <div>
-                        <span class="text-sm font-bold text-legna-indigo bg-legna-indigo/10 px-3 py-1 rounded-full">For Growing Businesses</span>
-                        <h3 class="text-2xl font-bold text-legna-indigo mt-4">Inventory Manager</h3>
+
+                <!-- CARD 2: DYNAMIC -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border-2 border-legna-terracotta relative hover:shadow-2xl transition duration-300 flex flex-col">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-legna-terracotta text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                        🎁 Free 1-Month Hosting
                     </div>
-                    <p class="text-gray-500 text-sm mt-2">Dynamic catalog + order dashboard for your staff.</p>
-                    <div class="my-6">
-                        <span class="text-4xl font-extrabold text-legna-indigo">25k</span>
-                        <span class="text-gray-500"> ETB / month</span>
+                    <div class="mt-2">
+                        <span class="text-xs font-bold text-legna-indigo dark:text-legna-terracotta bg-legna-indigo/10 dark:bg-white/10 px-3 py-1 rounded-full">For Growing Businesses</span>
+                        <h3 class="text-xl font-bold text-legna-indigo dark:text-white mt-3">Dynamic Website</h3>
                     </div>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Everything in Launchpad +</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Easy-to-use product upload dashboard</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Stock level tracking (low stock alerts)</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> 24/7 uptime monitoring & support</li>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Interactive apps with dashboards or e-commerce.</p>
+                    <div class="my-4">
+                        <span class="text-3xl font-extrabold text-legna-indigo dark:text-white">12,000+</span>
+                        <span class="text-gray-500 dark:text-gray-400"> ETB</span>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">*Final price depends on features & complexity.</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm flex-grow">
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> <strong class="dark:text-white">Everything in Static</strong>, plus:</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> User accounts & login</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Telebirr / Chapa integration</li>
+                        <li class="flex items-start text-gray-600 dark:text-gray-300"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Custom dashboard</li>
                     </ul>
-                    <a href="#contact" class="block text-center bg-legna-terracotta hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full transition">Start Free Trial</a>
+                    <a href="#contact" class="block text-center bg-legna-terracotta hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full transition text-sm">
+                        Start Your Project
+                    </a>
+                </div>
+
+                <!-- CARD 3: CARE PLAN -->
+                <div class="bg-legna-indigo dark:bg-gray-950 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col text-white">
+                    <div>
+                        <span class="text-xs font-bold text-legna-terracotta bg-white/20 px-3 py-1 rounded-full">Recurring Revenue</span>
+                        <h3 class="text-xl font-bold text-white mt-3">The Care Plan</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm mt-1">Hosting, domain, and peace of mind.</p>
+                    <div class="my-4">
+                        <span class="text-3xl font-extrabold text-white">1,500</span>
+                        <span class="text-gray-300"> ETB / month</span>
+                        <p class="text-xs text-gray-400 mt-1">*Billed monthly. Cancel anytime.</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm flex-grow text-gray-200">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Reliable hosting (Ethiopian-friendly)</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Domain name renewal</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> Daily security backups</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-legna-terracotta mt-1 mr-3 w-4"></i> 24/7 uptime monitoring</li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-white text-legna-indigo dark:bg-legna-terracotta dark:text-white hover:bg-gray-100 dark:hover:bg-orange-700 font-bold py-3 px-6 rounded-full transition text-sm">
+                        Secure My Site
+                    </a>
                 </div>
             </div>
-            <p class="text-center text-gray-400 text-sm mt-8">
-                <i class="fas fa-lock mr-1"></i> No hidden fees. Cancel anytime.
-            </p>
+            
+            <div class="max-w-3xl mx-auto mt-10 bg-white/80 dark:bg-gray-800/80 p-4 rounded-2xl border border-gray-200 dark:border-gray-700 text-center shadow-sm">
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                    <i class="fas fa-gem text-legna-terracotta mr-2"></i> 
+                    <strong>Not sure which one you need?</strong> Book a free 10-minute clarity call. 
+                    I'll review your business and recommend the perfect package—no pressure, no charge.
+                </p>
+                <a href="#contact" class="inline-block mt-2 text-legna-terracotta font-bold hover:underline text-sm">
+                    Book My Free Call →
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- SECTION 5: INTAKE / GATEKEEPER FORM         -->
+    <!-- INTAKE / GATEKEEPER FORM (Dark Mode)         -->
     <!-- ========================================== -->
-    <section id="contact" class="py-20 px-4 sm:px-6 bg-legna-indigo text-white">
+    <section id="contact" class="py-20 px-4 sm:px-6 bg-legna-indigo dark:bg-gray-950 text-white">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl sm:text-4xl font-bold">
                     Let's See If This Even <span class="text-legna-terracotta">Makes Sense</span> For You.
                 </h2>
-                <p class="text-gray-300 mt-3">Most businesses say yes. Fill this in, and I'll send you a <strong>free 5-minute voice note</strong> (in Amharic or English) with honest advice—no sales pitch.</p>
+                <p class="text-gray-300 dark:text-gray-400 mt-3">Most businesses say yes. Fill this in, and I'll send you a <strong>free 5-minute voice note</strong> (in Amharic or English) with honest advice—no sales pitch.</p>
             </div>
-            <!-- The Form (now with an ID for JS) -->
             <form id="contactForm" action="#" method="POST" class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 space-y-6">
                 <div>
                     <label class="block text-sm font-medium text-gray-200 mb-2">
                         <i class="fas fa-cash-register mr-2 text-legna-terracotta"></i> Do you currently have a price list or catalog you share with customers?
                     </label>
                     <div class="flex flex-wrap gap-4">
-                        <label class="flex items-center space-x-2 bg-white/10 px-4 py-3 rounded-full hover:bg-white/20 cursor-pointer transition">
+                        <label class="flex items-center space-x-2 bg-white/10 dark:bg-gray-800/50 hover:bg-white/20 dark:hover:bg-gray-700 px-4 py-3 rounded-full cursor-pointer transition">
                             <input type="radio" name="catalog" value="yes" class="accent-legna-terracotta" /> <span>Yes, I do</span>
                         </label>
-                        <label class="flex items-center space-x-2 bg-white/10 px-4 py-3 rounded-full hover:bg-white/20 cursor-pointer transition">
+                        <label class="flex items-center space-x-2 bg-white/10 dark:bg-gray-800/50 hover:bg-white/20 dark:hover:bg-gray-700 px-4 py-3 rounded-full cursor-pointer transition">
                             <input type="radio" name="catalog" value="no" class="accent-legna-terracotta" /> <span>No, not yet</span>
                         </label>
                     </div>
@@ -250,28 +550,28 @@
                     <label class="block text-sm font-medium text-gray-200 mb-2">
                         <i class="fas fa-brain mr-2 text-legna-terracotta"></i> What is your biggest daily headache right now? 
                     </label>
-                    <select class="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-legna-terracotta transition">
-                        <option value="" class="text-gray-800">Select your biggest pain point...</option>
-                        <option value="orders" class="text-gray-800">Managing orders is chaotic</option>
-                        <option value="questions" class="text-gray-800">Answering the same questions repeatedly</option>
-                        <option value="location" class="text-gray-800">Customers can't find my physical shop</option>
-                        <option value="internet" class="text-gray-800">I don't think my customers use the internet</option>
+                    <select class="w-full bg-white/10 dark:bg-gray-800/50 border border-white/20 dark:border-gray-600 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-legna-terracotta transition">
+                        <option value="" class="text-gray-800 dark:text-gray-200">Select your biggest pain point...</option>
+                        <option value="orders" class="text-gray-800 dark:text-gray-200">Managing orders is chaotic</option>
+                        <option value="questions" class="text-gray-800 dark:text-gray-200">Answering the same questions repeatedly</option>
+                        <option value="location" class="text-gray-800 dark:text-gray-200">Customers can't find my physical shop</option>
+                        <option value="internet" class="text-gray-800 dark:text-gray-200">I don't think my customers use the internet</option>
                     </select>
                 </div>
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-200 mb-2">Your Name</label>
-                        <input type="text" placeholder="e.g. Samuel" class="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-legna-terracotta" />
+                        <input type="text" placeholder="e.g. Samuel" class="w-full bg-white/10 dark:bg-gray-800/50 border border-white/20 dark:border-gray-600 text-white placeholder:text-gray-400 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-legna-terracotta" />
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-200 mb-2">Phone Number</label>
-                        <input type="tel" placeholder="09XX XXX XXX" class="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-legna-terracotta" />
+                        <input type="tel" placeholder="09XX XXX XXX" class="w-full bg-white/10 dark:bg-gray-800/50 border border-white/20 dark:border-gray-600 text-white placeholder:text-gray-400 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-legna-terracotta" />
                     </div>
                 </div>
                 <button type="submit" class="w-full bg-legna-terracotta hover:bg-orange-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-xl transition duration-300 transform hover:scale-[1.02]">
                     <i class="fas fa-paper-plane mr-2"></i> Send Me My Free Strategy Voice Note
                 </button>
-                <p class="text-xs text-gray-400 text-center mt-4">
+                <p class="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
                     <i class="fas fa-headset mr-1"></i> I personally listen to every submission. Expect a response within 12 hours.
                 </p>
             </form>
@@ -279,12 +579,12 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- FOOTER                                     -->
+    <!-- FOOTER (Dark Mode)                         -->
     <!-- ========================================== -->
-    <footer class="bg-[#0F172A] text-gray-400 py-8 px-4 text-center border-t border-gray-800">
+    <footer class="bg-[#0F172A] dark:bg-black text-gray-400 dark:text-gray-500 py-8 px-4 text-center border-t border-gray-800 dark:border-gray-900">
         <div class="max-w-6xl mx-auto">
             <p class="font-bold text-white text-lg">Legna <span class="text-legna-terracotta">Solutions</span></p>
-            <p class="text-sm mt-1">Digital tools built by us, for us.</p>
+            <p class="text-sm mt-1">መፍትሔዎች ለኛ · Digital tools built by us, for us.</p>
             <div class="flex justify-center space-x-6 mt-4">
                 <a href="#" class="hover:text-legna-terracotta"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="hover:text-legna-terracotta"><i class="fab fa-telegram"></i></a>
@@ -294,7 +594,6 @@
         </div>
     </footer>
 
-    <!-- 5. YOUR EXTERNAL CUSTOM SCRIPT (Defer ensures it loads after HTML) -->
     <script src="script.js" defer></script>
 </body>
 </html>

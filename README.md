@@ -42,10 +42,3 @@ Built during a strategic return to development after a year-long burnout break, 
 **Conclusion:** For a solo founder targeting cost-conscious, mobile-first users, proving *speed* is the #1 sales pitch. This page is our "dog food"—it demonstrates exactly how fast we can make *their* business run.
 
 ---
-
-## 📂 Project Structure
-legna-solutions-portfolio/
-├── index.html # Main structure (all sections: Hero, Problem, Why, Portfolio, About, Pricing, Form)
-├── style.css # Custom overrides (scrollbars, transitions, iOS zoom fix, dark mode transitions)
-├── script.js # Interactivity (dark mode toggle, form handler, smooth scroll, localStorage)
-└── README.md # You are here.

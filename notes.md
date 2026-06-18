@@ -1,0 +1,1 @@
+The user fills in their name, company name, phone Pain Point, and Catalog status.
